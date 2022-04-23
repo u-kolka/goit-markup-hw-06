@@ -3,6 +3,7 @@
   --main-background-color: #ffffff;
   --second-background-color: #2f303a;
   --button-background-color: #f5f4fa;
+  --hero-background-color: #C4C4C4;
   --accent-color: #2196f3;
   --black-color: #000000;
   --hover-focus-btn: #188CE8;
@@ -94,6 +95,7 @@ img {
 
 .site-nav-link,
 .site-contact-link {
+  position: relative;
   color: var(--title-text-color);
   font-weight: 500;
   font-size: var(--main-font-size);
@@ -101,6 +103,8 @@ img {
   text-decoration: none;
   letter-spacing: 0.02em;
   padding: 12px 0;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-nav-link:hover,
@@ -109,6 +113,18 @@ img {
 .site-contact-link:focus,
 .site-nav-link.current  {
   color: var(--accent-color);
+}
+
+.site-nav-link.current::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -50%;
+
+  width: 100%;
+  height: 4px;
+  background-color: currentColor;
+  border-radius: 2px;
 }
 
 /* Пеопределение цвета для контактов Cтудии */
@@ -149,21 +165,20 @@ img {
 
 /* Стилизация Основного контента страницы. Секция герой */
 .hero {
-  background-color: var(--second-background-color);
+  background-color: var(--hero-background-color);
   text-align: center;
   padding-top: 200px;
   padding-bottom: 200px;
   max-width: 1600px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #C4C4C4;;
   background-image: 
   linear-gradient( to right, 
   rgba(47, 48, 58, 0.4), 
   rgba(47, 48, 58, 0.4)), 
   url('../images/Hero.jpg');
   background-position: center;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
@@ -192,6 +207,8 @@ img {
   border: 0;
   border-radius: 4px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn:hover,
@@ -238,16 +255,16 @@ background-color: var(--hover-focus-btn);
   font-size: var(--main-font-size);
   line-height: 1.14;
   text-transform: uppercase;
-  /* margin-bottom: 10px; */
+}
+
+.feature-title {
+  margin-bottom: 10px;
 }
 /* Стили для секций Преимущества, Чем мы занимаемся, Наша Команда */
 .feature,
 .work,
 .team {
   display: flex;
-}
-.work.list {
-/* position: relative; */
 }
 
 .feature-item,
@@ -256,15 +273,20 @@ background-color: var(--hover-focus-btn);
   position: relative;
 }
 
-.work-title {
-display: block;
-min-height: 70px;
-width: 100%;
-position: absolute;
-bottom: 0 ;
+.feature-item p {
+  max-width: 270px;
+}
 
-background-color: rgba(47, 48, 58, 0.8);;
-}|
+.work-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(47, 48, 58, 0.8);;
+}
 
 .our-team {
   background-color: var(--button-background-color);
@@ -317,6 +339,8 @@ background-color: rgba(47, 48, 58, 0.8);;
   height: 44px;
   border-radius: 50%;
   color: var(--grey-color);
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 /* Стили для Секции Постоянные клиенты */
 
@@ -339,6 +363,8 @@ background-color: rgba(47, 48, 58, 0.8);;
   width: 100%;
   border: 1px solid var(--grey-color);
   border-radius: 4px;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }  
 
 /* Стили для футера проекта */
@@ -357,6 +383,10 @@ background-color: rgba(47, 48, 58, 0.8);;
   margin-left: 70px;
 }
 
+.footer-address {
+ margin-top: 20px;
+}
+
 .footer-title {
   margin-bottom: 20px;
 }
@@ -370,6 +400,8 @@ background-color: rgba(47, 48, 58, 0.8);;
   color: rgba(255, 255, 255, 0.6);
   font-style: normal;
   text-decoration: none;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-link:hover,
@@ -400,8 +432,9 @@ margin-left: 10px;
 
 .page-footer .social-link {
   background-color: rgba(255, 255, 255, 0.1);
-  color: var(--white-color);
+  color: var(--white-color); 
 
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-link:hover,
@@ -410,7 +443,7 @@ margin-left: 10px;
   color: var(--white-color);
 }
 
-
+/* Оформление модального окна на ст. Студия */
 .backdrop {
   position: fixed;
   top: 0;
@@ -418,27 +451,35 @@ margin-left: 10px;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop.is-hidden {
+  visibility: hidden;
   opacity: 0;
   pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.5);
 }
 
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
 
   min-width: 530px;
   min-height: 580px;
   padding: 15px;
 
   background-color: var(--white-color);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.close {
+.btn-close {
   position: absolute;
   top: 8px;
   right: 8px;
@@ -447,7 +488,6 @@ margin-left: 10px;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
-
 }
 
 /* Стили для страницы Портфолио */
@@ -463,6 +503,8 @@ margin-left: 10px;
   border: 0;
   border-radius: 4px;
   padding: 6px 22px;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1); 
 }
 
 .filter-btn:hover,
@@ -503,17 +545,12 @@ margin-left: 10px;
   margin-bottom: 0;
 }
 
-.project-desc {
-  padding: 20px 24px;
-  border-right: 1px solid var(--project-border);
-  border-bottom: 1px solid var(--project-border);
-  border-left: 1px solid var(--project-border);
-}
-
 .project-link {
   display: block;
   text-decoration: none;
   color: inherit;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .project-link:hover,
@@ -521,6 +558,34 @@ margin-left: 10px;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
   0px 4px 4px rgba(0, 0, 0, 0.06),
   1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
+.project-link:hover .project-overlay,
+.project-link:focus .project-overlay  {
+  transform: translateY(0);
+}
+
+.project-thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 63px 24px;
+  background-color: rgba(33, 150, 243, 0.9);
+  
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-overlay-text {
+  font-size: 18px;
+  line-height: 1.56;
+  color: var(--white-color);
 }
 
 .project-title {
@@ -534,4 +599,11 @@ margin-left: 10px;
 .project-text {
   font-size: 16px;
   line-height: 1.88;
+}
+
+.project-desc {
+  padding: 20px 24px;
+  border-right: 1px solid var(--project-border);
+  border-bottom: 1px solid var(--project-border);
+  border-left: 1px solid var(--project-border);
 }
