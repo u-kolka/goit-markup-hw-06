@@ -309,12 +309,13 @@
     <!-- Футер страницы Студия -->
     <footer class="page-footer">
         <div class="container">
-            <div class="inner">
+            <div class="inner contacts">
              <a href="./index.html" class="footer logo"><span class="part-logo">Web</span>Studio</a>
              <address class="footer-address">
                 <ul class="site-contact list">
                     <li class="footer-item"><a href="https://goo.gl/maps/1pM5NKTAPKCGfk6P8" target="_blank"
-                            rel="noopener noreferrer" class="footer-address-link">г. Киев, пр-т Леси Украинки, 26</a></li>
+                            rel="noopener noreferrer" class="footer-address-link">
+                            г. Киев, пр-т Леси Украинки, 26</a></li>
                     <li class="footer-item"><a href="mailto:info@devstudio.com" class="footer-link">info@devstudio.com</a></li>
                     <li class="footer-item"><a href="tel:+380961111111" class="footer-link">+38 096 111 11 11</a></li>
                 </ul>
@@ -322,7 +323,7 @@
             </div>
             <!-- Иконки соц-сетей Футера -->
              <div class="inner socials">
-             <h4 class="footer-title">Присоединяйтесь</h4>
+             <b class="footer-tagline">Присоединяйтесь</b>
                 <ul class="social list">
                  <li class="social-item">
                     <a href="" class="social-link">
@@ -354,6 +355,18 @@
                  </li>
                  </ul>
              </div>
+             <form class="inner subscribe">
+                 <b class="footer-tagline">
+                    <label for="mail">Подпишитесь на рассылку</label>
+                 </b>
+                 <input class="input-subscribe" type="email" name="mail" id="mail" placeholder="E-mail">
+
+                 <button class="btn subscribe" type="submit">Подписаться
+                     <svg class="icon" width="24" height="24">
+                         <use href="./images/symbol-defs.svg#icon-send"></use>
+                     </svg>
+                 </button>
+             </form>
         </div>
     </footer>
 <!-- Модальное окно -->
@@ -364,6 +377,28 @@
                 <use href="./images/symbol-defs.svg#icon-close"></use>
             </svg>
         </button>
+        <h2 class="section-title">Оставьте свои данные, мы вам перезвоним</h2>
+        <form class="form">
+            <div class="form-field">
+                <label for="user-name">Имя</label>
+                <input type="text" name="user-name" id="user-name">
+            </div>
+
+            <div class="form-field">
+                <label for="tel">Телефон</label>
+                <input type="tel" name="tel" id="tel">
+            </div>
+
+            <div class="form-field">
+                <label for="email">Почта</label>
+                <input type="email" name="email" id="email">
+            </div>
+
+            <label for="comment">Комментарий</label>
+            <textarea name="comment" id="comment" rows="6" placeholder="Введите текст"></textarea>
+
+            <button class="btn send" type="submit">Отправить</button>
+        </form>
     </div>
 </div>
 <!-- Скрипт для модального окна -->
