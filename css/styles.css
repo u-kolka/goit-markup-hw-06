@@ -482,19 +482,74 @@ color: rgba(255, 255, 255, 0.6);
   margin-left: 10px;
 }
 /* Стили к эл-там формы Модального окна */
+.form-field {
+  position: relative;
+}
+
 .form-field input,
 .form textarea {
   width: 100%;
   margin: 0;
-  padding: 11px 12px;
+  padding: 11px 40px;
   border: 1px solid rgba(33, 33, 33, 0.2);
   border-radius: 4px;
+  cursor: pointer;
+
+  transition: outline 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-field input:focus,
+.form textarea:focus {
+  outline: 1px solid var(--accent-color);
+}
+
+.form textarea {
+  padding: 12px 16px;
   resize: none;
+}
+
+.form textarea::placeholder {
+  color: rgba(117, 117, 117, 0.5);
+}
+ 
+.form-field:focus-within > .icon {
+  fill: var(--accent-color);
+  transition: outline 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn.send {
   display: block;
   margin: 0 auto;
+}
+/* Оформление кастольного чекбокса */
+.checkbox-label {
+  position: relative;
+  display: block;
+  margin-left: 37px;
+  margin-bottom: 30px;
+}
+
+.terms {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+.icon-checkbox {
+  position: absolute;
+  top: 50%;
+  left: -22px;
+  transform: translateY(-50%);
+  border: 2px solid var(--title-text-color);
+  border-radius: 2px;
+  fill: #fff;
+
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.checkbox:checked + .icon-checkbox {
+  transform: scale(1.4) translateY(-35%);
+  border-color: transparent;
+  fill: var(--accent-color);
 }
 
 /* Оформление модального окна на ст. Студия */
@@ -506,6 +561,7 @@ color: rgba(255, 255, 255, 0.6);
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
   opacity: 1;
+  
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -532,7 +588,7 @@ color: rgba(255, 255, 255, 0.6);
   background-color: var(--white-color);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-
+/* Оформление кнопки закрытия модального окна */
 .btn-close {
   position: absolute;
   top: 8px;
@@ -553,6 +609,14 @@ color: rgba(255, 255, 255, 0.6);
 .modal .section-title {
 font-size: 20px;
 margin-bottom: 12px;
+}
+
+.form-field .icon {
+  position: absolute;
+  top: 55%;
+  left: 12px;
+
+  fill: var(--title-text-color);
 }
 
 /* Стили для страницы Портфолио */
